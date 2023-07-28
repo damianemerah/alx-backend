@@ -2,7 +2,7 @@
 '''Task 2's module'''
 
 
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 import math
 import csv
 
@@ -43,28 +43,18 @@ class Server:
             return []
         return self.dataset()[start: end]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
-        '''Return paginated list'''
-        assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page_size > 0
-
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """Retrieves information about a page.
+        """
+        page_data = self.get_page(page, page_size)
         start, end = index_range(page, page_size)
-        data = self.dataset()
-
-        if start > data:
-            return {}
-
-        total_pages = len(self.dataset())
-        prev_page = page - 1 if page > 1 else None,
-        next_page = page + 1 if page < total_pages else None
-
-        dict_ = {
-            "page_size": page_size,
-            "page": page,
-            'data': data[start: end],
-            'next_page': next_page,
-            'prev_page': prev_page,
-            'total_pages': total_pages
+        total_pages = math.ceil(len(self.__dataset) / page_size)
+        page_info = {
+            'page_size': len(page_data),
+            'page': page,
+            'data': page_data,
+            'next_page': page + 1 if end < len(self.__dataset) else None,
+            'prev_page': page - 1 if start > 0 else None,
+            'total_pages': total_pages,
         }
-
-        return dict_
+        return page_info

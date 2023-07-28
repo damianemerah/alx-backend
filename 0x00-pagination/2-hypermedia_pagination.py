@@ -2,12 +2,12 @@
 '''Task 2's module'''
 
 
-from typing import List
+from typing import List, Tuple
 import math
 import csv
 
 
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     '''Return a tuple for start and end index'''
     start = (page - 1) * page_size
     end = start + page_size

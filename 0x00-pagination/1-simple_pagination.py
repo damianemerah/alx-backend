@@ -9,9 +9,8 @@ import csv
 
 def index_range(page: int, page_size: int) -> tuple[int, int]:
     '''Return a tuple for start and end index'''
-    if page and page_size > 1:
-        start = page * page_size - page_size
-        end = page * page_size
+    start = (page - 1) * page_size
+    end = start + page_size
     return (start, end)
 
 

@@ -32,7 +32,8 @@ class LFUCache(BaseCaching):
         if key is None or item is None:
             return
 
-        if len(self.cache_data) >= self.MAX_ITEMS and key not in self.cache_data:
+        if len(self.cache_data) >= self.MAX_ITEMS and \
+                key not in self.cache_data:
             deleted_key = self.discard_lru()
             print(f'DISCARD: {deleted_key}')
 

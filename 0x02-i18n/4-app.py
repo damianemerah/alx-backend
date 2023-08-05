@@ -24,7 +24,6 @@ def get_locale() -> str:
 
     queries = request.query_string.decode('utf-8').split('&')
     query_lang = [q for q in queries if q.startswith('locale')]
-    print(query_lang)
 
     if query_lang:
         query_lang = query_lang[0].split('=')[1]

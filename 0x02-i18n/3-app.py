@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" Basic Flask app"""
+""" Basic Flask app with internationalization support"""
+
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
@@ -26,7 +27,7 @@ def get_locale() -> str:
 @app.route('/')
 def index():
     """ Returns a string"""
-    return render_template('2-index.html')
+    return render_template('3-index.html')
 
 
 if __name__ == "__main__":

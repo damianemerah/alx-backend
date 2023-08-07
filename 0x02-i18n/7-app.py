@@ -57,7 +57,7 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@babel.timezonesselector
+@babel.timezoneselector
 def get_timezone() -> str:
     ''' Infer appropriate time zone'''
     if request.args.get('timezone'):

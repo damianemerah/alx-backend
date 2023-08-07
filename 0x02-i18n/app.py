@@ -2,7 +2,7 @@
 """ Basic Flask app with Infer appropriate time zone"""
 
 from flask import Flask, render_template, request, g
-from flask_babel import Babel
+from flask_babel import Babel, format_datetime
 from typing import Union, Dict
 import pytz
 
@@ -73,6 +73,7 @@ def get_timezone() -> str:
 @app.route('/')
 def index():
     """ Returns a string"""
+    g.time = format_datetime()
     return render_template('index.html')
 
 
